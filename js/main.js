@@ -1,14 +1,13 @@
-import { loginUser } from "./firebase.js";
-import { initGameUI, loadNextMessage } from "./ui/messages.js";
-
-/* =========================
+import { loginUser } from "../firebase.js";
+import { initGameUI, loadNextMessage } from "./messages.js";/* =========================
    ELEMENTS
 ========================= */
 const loginScreen = document.getElementById("login-screen");
 const desktop = document.getElementById("desktop");
 
 const loginBtn = document.getElementById("loginBtn");
-const emailInput = document.getElementById("email");
+
+console.log("loginBtn =", loginBtn);const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const message = document.getElementById("message");
 
@@ -44,7 +43,7 @@ loginBtn.addEventListener("click", async () => {
 /* =========================
    SIGNUP FLOW
 ========================= */
-import { signupUser } from "./firebase.js";
+import { signupUser } from "../firebase.js";
 
 window.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("signupBtn");
@@ -81,16 +80,18 @@ window.addEventListener("DOMContentLoaded", () => {
 /* =========================
    WINDOW CONTROLS
 ========================= */
-openMessagesBtn.addEventListener("click", () => {
-  messagesWindow.classList.remove("hidden");
+if (openMessagesBtn && messagesWindow) {
+  openMessagesBtn.addEventListener("click", () => {
+    messagesWindow.classList.remove("hidden");
+    loadNextMessage();
+  });
+}
 
-  // load first message when opened
-  loadNextMessage();
-});
-
-closeMessagesBtn.addEventListener("click", () => {
-  messagesWindow.classList.add("hidden");
-});
+if (closeMessagesBtn && messagesWindow) {
+  closeMessagesBtn.addEventListener("click", () => {
+    messagesWindow.classList.add("hidden");
+  });
+}
 
 /* =========================
    TIME
