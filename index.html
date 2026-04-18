@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ScamQuest OS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<!-- ================= LOGIN SCREEN ================= -->
+<div id="login-screen" class="screen active">
+
+  <!-- 🍎 TOP BAR -->
+  <div class="top-bar">
+
+    <!-- LEFT -->
+    <div class="left">
+      <span class="apple-logo">🍎</span>
+
+      <div class="power-controls">
+        <button id="sleepBtn">Sleep</button>
+        <button id="restartBtn">Restart</button>
+        <button id="shutdownBtn">Shutdown</button>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+      <span>📶</span>
+      <span>🔋 87%</span>
+      <span id="time">--:--</span>
+    </div>
+
+  </div>
+
+  <!-- 💻 LOGIN WINDOW -->
+  <div class="login-window">
+
+    <!-- MAC BUTTONS -->
+    <div class="title-bar">
+      <div class="mac-buttons">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+      <span class="title">Login</span>
+    </div>
+
+    <div class="content">
+
+      <!-- 👤 PROFILE -->
+      <div class="profile">
+        <img src="https://i.pravatar.cc/100" />
+      </div>
+
+      <h2>Welcome</h2>
+
+      <input id="email" placeholder="Email" />
+      <input id="password" type="password" placeholder="Password" />
+
+      <button id="loginBtn">Login</button>
+        <button id="guestBtn">Continue as Guest</button> // guest button
+      
+
+      <p id="message"></p>
+
+      <!-- 🔗 SIGNUP -->
+      <div class="login-footer">
+        <span>New here?</span>
+        <a href="signup.html">Create account</a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- ================= DESKTOP ================= -->
+<div id="desktop" class="screen hidden">
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="left">ScamQuest OS</div>
+    <div class="right" id="score">Score: 0</div>
+  </div>
+
+  <!-- DESKTOP APPS -->
+  <div class="desktop-icons">
+
+    <div class="icon" id="openMessages">
+      💬
+      <span>Messages</span>
+    </div>
+
+    <div class="icon">
+      ⚙️
+      <span>Settings</span>
+    </div>
+
+  </div>
+
+  <!-- ================= MESSAGES WINDOW ================= -->
+  <div id="messages-window" class="window hidden">
+
+    <div class="window-bar">
+      <span>Messages</span>
+      <button id="closeMessages">✕</button>
+    </div>
+
+    <div class="window-content">
+
+      <div id="message-app"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>
