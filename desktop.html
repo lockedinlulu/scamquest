@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+</head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ScamQuest OS</title>
 
   <link rel="stylesheet" href="style.css" />
-<script type="module" src="./js/main.js"></script></head>
+<script type="module" src="./js/desktop.js"></script>
 
 <body>
+
+  <!-- SCORE -->
+<div id="score" style="position:absolute;top:35px;right:12px;font-size:13px;">Score: 0</div>
+
+<div class="dock-item" id="openMessages">💬<span>Messages</span></div>
+
+<!-- MESSAGES WINDOW -->
+<div id="messages-window" class="window hidden">
+  <div class="window-bar">
+    <span>Messages</span>
+    <button id="closeMessages">✕</button>
+  </div>
+  <div class="window-content">
+    <div id="message-app"></div>
+  </div>
+</div>
 
 <!-- 🍎 TOP BAR -->
 <div class="top-bar">
@@ -47,8 +63,44 @@
   <div class="dock-item">🗑️<span>Recycle</span></div>
   <div class="dock-item">💬<span>Messages</span></div>
   <div class="dock-item">📧<span>Email</span></div>
-  <div class="dock-item">📷<span>Photos</span></div>
-  <div class="dock-item">🎥<span>FaceTime</span></div>
+<div class="dock-item" id="openPhotos">📷<span>Photos</span></div>
+</div>
+
+<!-- ================= PHOTOS WINDOW ================= -->
+<!-- ================= PHOTOS WINDOW ================= -->
+<div id="photos-window" class="window hidden">
+
+  <div class="window-bar">
+
+    <div class="mac-buttons">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+    </div>
+
+    <span>Photos</span>
+    <button id="closePhotos">✕</button>
+  </div>
+
+  <div class="photos-container">
+
+    <!-- LEFT SIDEBAR -->
+    <div class="photos-sidebar">
+      <div class="section-title">Libraries</div>
+      <div class="section-title">Collections</div>
+
+      <div class="section-title">Devices</div>
+      <div class="device" id="macbook">
+        📱 John Doe's MacBook
+      </div>
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="photos-main" id="photosMain">
+      <p class="hint">Select a device to view photos</p>
+    </div>
+
+  </div>
 
 </div>
 

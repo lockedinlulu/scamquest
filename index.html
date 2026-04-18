@@ -12,33 +12,23 @@
 <!-- ================= LOGIN SCREEN ================= -->
 <div id="login-screen" class="screen active">
 
-  <!-- 🍎 TOP BAR -->
   <div class="top-bar">
-
-    <!-- LEFT -->
     <div class="left">
       <span class="apple-logo">🍎</span>
-
       <div class="power-controls">
-        <button id="sleepBtn">Sleep</button>
-        <button id="restartBtn">Restart</button>
-        <button id="shutdownBtn">Shutdown</button>
+        <button onclick="document.body.style.visibility='hidden'">Sleep</button>
+        <button onclick="location.reload()">Restart</button>
+        <button onclick="document.body.innerHTML='Shutting down...'">Shutdown</button>
       </div>
     </div>
-
-    <!-- RIGHT -->
     <div class="right">
       <span>📶</span>
       <span>🔋 87%</span>
-      <span id="time">--:--</span>
+      <span id="clock">--:--</span>
     </div>
-
   </div>
 
-  <!-- 💻 LOGIN WINDOW -->
   <div class="login-window">
-
-    <!-- MAC BUTTONS -->
     <div class="title-bar">
       <div class="mac-buttons">
         <span class="dot red"></span>
@@ -49,29 +39,24 @@
     </div>
 
     <div class="content">
-
-      <!-- 👤 PROFILE -->
       <div class="profile">
         <img src="https://i.pravatar.cc/100" />
       </div>
 
       <h2>Welcome</h2>
 
-      <input id="email" placeholder="Email" />
-      <input id="password" type="password" placeholder="Password" />
+<input id="email" placeholder="Email" />
+<input id="password" type="password" placeholder="Password" />
 
       <button id="loginBtn">Login</button>
-        <button id="guestBtn">Continue as Guest</button> // guest button
-      
+      <button id="guestBtn" class="guest-btn">Continue as Guest</button>
 
       <p id="message"></p>
 
-      <!-- 🔗 SIGNUP -->
       <div class="login-footer">
         <span>New here?</span>
         <a href="signup.html">Create account</a>
       </div>
-
     </div>
   </div>
 
@@ -80,46 +65,160 @@
 <!-- ================= DESKTOP ================= -->
 <div id="desktop" class="screen hidden">
 
-  <!-- TOP BAR -->
   <div class="top-bar">
-    <div class="left">ScamQuest OS</div>
-    <div class="right" id="score">Score: 0</div>
+    <div class="left">
+      <span class="apple-logo">🍎</span>
+      <div class="power-controls">
+        <button onclick="sleep()">Sleep</button>
+        <button onclick="restart()">Restart</button>
+        <button onclick="shutdown()">Shutdown</button>
+      </div>
+    </div>
+    <div class="right">
+      <span>📶</span>
+      <span>🔋 87%</span>
+      <span id="clock-desktop">--:--</span>
+    </div>
   </div>
 
-  <!-- DESKTOP APPS -->
+  <!-- DESKTOP ICONS -->
   <div class="desktop-icons">
+    <div class="icon" onclick="openWindow('window-messages')">💬<span>Messages</span></div>
+    <div class="icon" onclick="openWindow('window-notes')">📝<span>Notes</span></div>
+    <div class="icon" onclick="openWindow('window-safari')">🧭<span>Safari</span></div>
+    <div class="icon" onclick="openWindow('window-images')">🖼️<span>Images</span></div>
+    <div class="icon" onclick="openWindow('window-settings')">⚙️<span>Settings</span></div>
+    <div class="icon" onclick="openWindow('window-files')">📁<span>Files</span></div>
+    <div class="icon" onclick="openWindow('window-recycle')">🗑️<span>Recycle</span></div>
+    <div class="icon" onclick="openWindow('window-appstore')">🛍️<span>App Store</span></div>
+  </div>
 
-    <div class="icon" id="openMessages">
-      💬
-      <span>Messages</span>
+  <!-- ================= GENERIC WINDOWS ================= -->
+
+  <div id="window-notes" class="window hidden">
+    <div class="window-bar">
+      <div class="mac-buttons"><span class="dot red" onclick="closeWindow('window-notes')"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+      <span>Notes</span>
     </div>
+    <div class="window-content">Your notes app.</div>
+  </div>
 
-    <div class="icon">
-      ⚙️
+  <div id="window-safari" class="window hidden">
+    <div class="window-bar">
+      <div class="mac-buttons"><span class="dot red" onclick="closeWindow('window-safari')"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+      <span>Safari</span>
+    </div>
+    <div class="window-content">Web browsing simulation.</div>
+  </div>
+
+  <div id="window-images" class="window hidden">
+    <div class="window-bar">
+      <div class="mac-buttons"><span class="dot red" onclick="closeWindow('window-images')"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+      <span>Images</span>
+    </div>
+    <div class="window-content">Photo gallery placeholder.</div>
+  </div>
+
+  <div id="window-settings" class="window hidden">
+    <div class="window-bar">
+      <div class="mac-buttons"><span class="dot red" onclick="closeWindow('window-settings')"></span><span class="dot yellow"></span><span class="dot green"></span></div>
       <span>Settings</span>
     </div>
-
+    <div class="window-content">System settings.</div>
   </div>
 
-  <!-- ================= MESSAGES WINDOW ================= -->
-  <div id="messages-window" class="window hidden">
+  <div id="window-files" class="window hidden">
+    <div class="window-bar">
+      <div class="mac-buttons"><span class="dot red" onclick="closeWindow('window-files')"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+      <span>Files</span>
+    </div>
+    <div class="window-content">File system browser.</div>
+  </div>
+
+  <div id="window-recycle" class="window hidden">
+    <div class="window-bar">
+      <div class="mac-buttons"><span class="dot red" onclick="closeWindow('window-recycle')"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+      <span>Recycle Bin</span>
+    </div>
+    <div class="window-content">Deleted files appear here.</div>
+  </div>
+
+  <div id="window-appstore" class="window hidden">
+    <div class="window-bar">
+      <div class="mac-buttons"><span class="dot red" onclick="closeWindow('window-appstore')"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+      <span>App Store</span>
+    </div>
+    <div class="window-content">Download apps here.</div>
+  </div>
+
+  <!-- ================= MESSAGES ================= -->
+  <div id="window-messages" class="window hidden">
 
     <div class="window-bar">
+      <div class="mac-buttons">
+        <span class="dot red" onclick="closeWindow('window-messages')"></span>
+        <span class="dot yellow" onclick="minimizeWindow('window-messages')"></span>
+        <span class="dot green" onclick="maximizeWindow('window-messages')"></span>
+      </div>
       <span>Messages</span>
-      <button id="closeMessages">✕</button>
+      <div class="game-hud">
+        <span id="hearts-display">❤️❤️❤️</span>
+        <span id="score-display">⭐ 0</span>
+      </div>
     </div>
 
-    <div class="window-content">
+    <!-- CHAT SCREEN -->
+    <div id="chat-screen" class="chat-screen hidden">
+      <div class="chat-header">
+        <span class="back-btn" onclick="closeChat()">←</span>
+        <span id="chat-name">Name</span>
+        <div id="verdict-badge" class="verdict-badge hidden">
+          <button class="verdict-btn scam" onclick="submitVerdict(true)">❌ Scam</button>
+          <button class="verdict-btn legit" onclick="submitVerdict(false)">✅ Legit</button>
+        </div>
+      </div>
+      <div id="chat-messages" class="chat-messages"></div>
+      <div class="chat-input">
+        <input id="chat-input-field" placeholder="iMessage" />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
 
-      <div id="message-app"></div>
-
+    <div class="window-content messages-app">
+      <div class="messages-body">
+        <div class="search-wrapper">
+          <input class="messages-search" placeholder="Search messages..." />
+        </div>
+        <div class="pinned-section">
+          <!-- Populated by script.js -->
+        </div>
+        <div class="chat-list">
+          <!-- Populated by script.js -->
+        </div>
+      </div>
     </div>
 
   </div>
 
 </div>
 
-<script type="module" src="./js/main.js"></script>
+<!-- TOAST -->
+<div id="toast" class="toast hidden"></div>
+
+<script>
+  function startClock() {
+    const ids = ["clock", "clock-desktop"];
+    function tick() {
+      const t = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      ids.forEach(id => { const el = document.getElementById(id); if (el) el.textContent = t; });
+    }
+    tick();
+    setInterval(tick, 1000);
+  }
+  window.addEventListener("DOMContentLoaded", startClock);
+</script>
+
+<script type="module" src="./js/login.js"></script>
 
 </body>
 </html>

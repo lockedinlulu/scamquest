@@ -9,36 +9,27 @@
 
 <body>
 
-<!-- 🍎 TOP BAR -->
 <div class="top-bar">
-
   <div class="left">
     <span class="apple-logo">🍎</span>
-
     <div class="power-controls">
-      <button>Sleep</button>
+      <button onclick="document.body.style.visibility='hidden'">Sleep</button>
       <button onclick="location.reload()">Restart</button>
       <button onclick="document.body.innerHTML='Shutting down...'">Shutdown</button>
     </div>
   </div>
-
   <div class="right">
     <span>📶</span>
     <span>🔋 87%</span>
     <span id="time">--:--</span>
   </div>
-
 </div>
 
-<!-- 💻 SIGNUP WINDOW -->
 <div class="screen active">
-
   <div class="login-window">
-
-    <!-- MAC BAR -->
     <div class="title-bar">
       <div class="mac-buttons">
-        <span class="dot red"></span>
+        <span class="dot red" onclick="window.location.href='index.html'"></span>
         <span class="dot yellow"></span>
         <span class="dot green"></span>
       </div>
@@ -46,56 +37,41 @@
     </div>
 
     <div class="content">
-
-      <!-- PROFILE -->
       <div class="profile">
         <img src="https://i.pravatar.cc/100" />
       </div>
 
-      <h2>Welcome</h2>
+      <h2>Create Account</h2>
 
-      <input id="username" placeholder="Username" />
-      <input id="email" placeholder="Email" />
+      <input id="usernameDisplay" placeholder="Username" />
+      <input id="username" placeholder="Email" />
       <input id="password" type="password" placeholder="Password" />
 
       <button id="signupBtn">Create Account</button>
 
       <p id="message"></p>
 
-      <!-- LOGIN LINK -->
       <div class="login-footer">
         <span>Already have an account?</span>
         <a href="index.html">Login</a>
       </div>
-
     </div>
-
   </div>
-
 </div>
 
-<script type="module" src="main.js"></script>
+<script type="module" src="signup.js"></script>
 
 <script>
-/* same clock fix */
-function startClock() {
-  const timeEl = document.getElementById("time");
-  if (!timeEl) return;
-
-  function updateTime() {
-    const now = new Date();
-    const timeStr = now.toLocaleTimeString([], {
-      hour: '2-digit',
-      minute: '2-digit'
-    });
-    timeEl.textContent = timeStr;
+  function startClock() {
+    const el = document.getElementById("time");
+    if (!el) return;
+    function tick() {
+      el.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+    tick();
+    setInterval(tick, 1000);
   }
-
-  updateTime();
-  setInterval(updateTime, 1000);
-}
-
-window.addEventListener("DOMContentLoaded", startClock);
+  window.addEventListener("DOMContentLoaded", startClock);
 </script>
 
 </body>
